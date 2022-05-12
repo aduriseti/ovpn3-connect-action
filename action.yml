@@ -18,6 +18,7 @@ runs:
     - name: Write VPN Files
       shell: bash
       run: |
+        echo "${{ inputs.ovpn-config }}"
         echo "${{ inputs.ovpn-config }}" > .github/vpn.ovpn
     - name: Install openvpn3
       shell: bash
