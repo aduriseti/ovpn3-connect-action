@@ -18,7 +18,7 @@ runs:
     - name: Write VPN Files
       shell: bash
       run: |
-        echo "${{ inputs.ovpn-config }}"
+        mkdir -p ~/.ssh
         echo "${{ inputs.ovpn-config }}" > .github/vpn.ovpn
     - name: Install openvpn3
       shell: bash
@@ -33,8 +33,3 @@ runs:
       shell: bash
       run: |
         { echo ${{ inputs.vpn-user }} ; echo ${{ inputs.vpn-pass }} ; } | openvpn3 session-start --config .github/vpn.ovpn
-    
-    # - name: Kill VPN Connection
-    #   if: always()
-    #   run: |
-    #     openvpn3 session-manage --disconnect --config .github/vpn.ovpn
