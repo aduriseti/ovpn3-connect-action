@@ -1,7 +1,6 @@
 name: ovpn3-connect-action
 description: 
   Setup vpn using a self-contained .ovpn file
-  Based on "https://github.com/golfzaptw/action-connect-ovpn/issues/36#issuecomment-746201549"
 inputs:
   ovpn-config:
     description: Complete self-contained .ovpn file
