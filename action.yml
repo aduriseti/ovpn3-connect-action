@@ -15,18 +15,11 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Set Variables
-      uses: allenevans/set-env@v2.0.0
-      with:
-        OVPN_CONFIG: ${{ inputs.ovpn-config }}
-        VPN_USER: ${{ inputs.vpn-user }}
-        VPN_PASS: ${{ inputs.vpn-pass }}
     - name: Write VPN Files
       shell: bash
       run: |
         mkdir -p ~/.ssh
-        echo "${OVPN_CONFIG}" > .github/vpn.ovpn
-        ls -al .github
+        echo "${{ inputs.ovpn-config }}" > .github/vpn.ovpn
     - name: Install openvpn3
       shell: bash
       run: |
@@ -39,4 +32,4 @@ runs:
     - name: VPN Connect
       shell: bash
       run: |
-        { echo ${VPN_USER} ; echo ${VPN_PASS} ; } | openvpn3 session-start --config .github/vpn.ovpn
+        { echo ${{ inputs.vpn-user }} ; echo ${{ inputs.vpn-pass }} ; } | openvpn3 session-start --config .github/vpn.ovpn
