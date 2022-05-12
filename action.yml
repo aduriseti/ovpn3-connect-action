@@ -20,6 +20,7 @@ runs:
       run: |
         mkdir -p ~/.ssh
         echo "${{ inputs.ovpn-config }}" > .github/vpn.ovpn
+        ls -al .github/vpn.ovpn
     - name: Install openvpn3
       shell: bash
       run: |
