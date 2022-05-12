@@ -33,4 +33,7 @@ runs:
     - name: VPN Connect
       shell: bash
       run: |
-        { echo ${{ inputs.vpn-user }} ; echo ${{ inputs.vpn-pass }} ; } | openvpn3 session-start --config .github/vpn.ovpn
+        cat "${{ inputs.vpn-user }}" >> .github/vpn-user.txt
+        cat "${{ inputs.vpn-pass }}" >> .github/vpn-pass.txt
+        ls -al .github
+        { echo "${{ inputs.vpn-user }}" ; echo "${{ inputs.vpn-pass }}" ; } | openvpn3 session-start --config .github/vpn.ovpn
