@@ -27,7 +27,6 @@ runs:
         mkdir -p ~/.ssh
         echo "${OVPN_CONFIG}" > .github/vpn.ovpn
         ls -al .github
-        cat .github/vpn.ovpn
     - name: Install openvpn3
       shell: bash
       run: |
